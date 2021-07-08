@@ -27,6 +27,24 @@ class DnaCollectionManager(object):
             sequence.set_dna_sequence(dna_sequence)
         return sequence
 
+    def remove_sequence(self, sequence):
+        if sequence.get_id() not in self.__ids:
+            raise Exception("Exception: the sequence is not exists")
+        if len(self.__dna_sequences) == 1:
+            self.__dna_sequences = []
+            self.__ids = {}
+            self.__names = {}
+            return
+        index = self.__ids[sequence.get_id()]
+        last_id = self.__dna_sequences[-1].get_id()
+        last_name = self.__dna_sequences[-1].get_name()
+        self.__ids[last_id] = index
+        self.__names[last_name] = index
+        self.__dna_sequences[index] = self.__dna_sequences[-1]
+        del self.__dna_sequences[-1]
+        del self.__ids[sequence.get_id()]
+        del self.__names[sequence.get_name()]
+
     def read_sequence_by_id(self, sequence_id):
         if sequence_id not in self.__ids:
             raise Exception("Exception: sequence not found")
@@ -41,4 +59,3 @@ class DnaCollectionManager(object):
 
     def is_name_exists(self, sequence_name):
         return sequence_name in self.__names
-

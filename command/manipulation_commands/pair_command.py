@@ -26,10 +26,7 @@ class PairCommand(Command):
                     return "Exception: sequence name does not start with @"
                 new_sequence_name = args[2][1:]
                 if new_sequence_name == "@":
-                    copy = 1
-                    while self.__dna_collection.is_name_exists("{}_p{}".format(sequence_to_pair.get_name(), copy)):
-                        copy += 1
-                    new_sequence_name = "{}_p{}".format(sequence_to_pair.get_name(), copy)
+                    new_sequence_name = self._get_next_name(self.__dna_collection, sequence_to_pair.get_name(), "p")
                 dna_sequence = sequence_to_pair.get_dna_sequence().assignment()
                 new_dna_sequence = self.__get_pair(dna_sequence)
                 new_sequence = self.__dna_collection.save_sequence(new_sequence_name, new_dna_sequence)

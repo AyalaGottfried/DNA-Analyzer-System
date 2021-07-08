@@ -12,10 +12,7 @@ class DupCommand(Command):
         try:
             sequence_to_copy = self._get_sequence_identify(args[0], self.__dna_collection)
             if len(args) < 2:
-                copy = 1
-                while self.__dna_collection.is_name_exists("{}_{}".format(sequence_to_copy.get_name(), copy)):
-                    copy += 1
-                sequence_name = "{}_{}".format(sequence_to_copy.get_name(), copy)
+                sequence_name = self._get_next_name(self.__dna_collection, sequence_to_copy.get_name(), "")
             else:
                 if args[1][0] != "@":
                     return "Exception: sequence name does not start with @"

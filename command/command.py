@@ -13,3 +13,8 @@ class Command:
                 raise Exception("Exception: invalid sequence id")
         return dna_collection.read_sequence_by_name(sequence_identify)
 
+    def _get_next_name(self, dna_collection, old_name, prefix):
+        copy = 1
+        while dna_collection.is_name_exists("{}_s{}".format(old_name, copy)):
+            copy += 1
+        return "{}_{}{}".format(old_name, prefix, copy)

@@ -22,17 +22,13 @@ class SliceCommand(Command):
                     return "Exception: sequence name does not start with @"
                 new_sequence_name = args[4][1:]
                 if new_sequence_name == "@":
-                    copy = 1
-                    while self.__dna_collection.is_name_exists("{}_s{}".format(sequence_to_slice.get_name(), copy)):
-                        copy += 1
-                    new_sequence_name = "{}_s{}".format(sequence_to_slice.get_name(), copy)
+                    new_sequence_name = self._get_next_name(self.__dna_collection, sequence_to_slice.get_name(), "s")
                 dna_sequence = sequence_to_slice.get_dna_sequence().assignment()
                 dna_sequence = dna_sequence[start_index:end_index]
-                new_sequence = self.__dna_collection.save_sequence(new_sequence_name, dna_sequence)
-                return "[{}] {}: {}".format(new_sequence.get_id(), new_sequence_name, dna_sequence)
             else:
-                sequence_to_slice.set_dna_sequence(sequence_to_slice.get_dna_sequence()[start_index:end_index])
-                return "[{}] {}: {}".format(sequence_to_slice.get_id(), sequence_to_slice.get_name(),
-                                            sequence_to_slice.get_dna_sequence())
+                new_sequence_name = sequence_to_slice.get_name()
+                dna_sequence = sequence_to_slice.get_dna_sequence()[start_index:end_index]
+            new_sequence = self.__dna_collection.save_sequence(new_sequence_name, dna_sequence)
+            return "[{}] {}: {}".format(new_sequence.get_id(), new_sequence_name, dna_sequence)
         except Exception as e:
             return e.args[0]
