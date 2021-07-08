@@ -34,6 +34,5 @@ class SliceCommand(Command):
                 sequence_to_slice.set_dna_sequence(sequence_to_slice.get_dna_sequence()[start_index:end_index])
                 return "[{}] {}: {}".format(sequence_to_slice.get_id(), sequence_to_slice.get_name(),
                                             sequence_to_slice.get_dna_sequence())
-
         except Exception as e:
             return e.args[0]

@@ -36,9 +36,11 @@ class DnaSequence:
 
     def __getitem__(self, key):
         if isinstance(key, slice):
-            indices = range(*key.indices(len(self.__sequence)))
-            return DnaSequence(''.join([self.__sequence[i] for i in indices]))
-        return DnaSequence(self.__sequence[key])
+            return DnaSequence(self.__sequence[key])
+        return self.__sequence[key]
+
+    def __setitem__(self, key, value):
+        self.__sequence = self.__sequence[:key]+value+self.__sequence[key+1:]
 
     def __len__(self):
         return len(self.__sequence)
