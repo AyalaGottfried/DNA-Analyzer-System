@@ -7,7 +7,7 @@ class NewCommand(Command):
     __next_name_index = 1
 
     def __init__(self):
-        self.__data_manager = DnaCollectionManager()
+        self.__dna_collection = DnaCollectionManager()
 
     def execute(self, *args):
         if len(args) == 0:
@@ -22,7 +22,7 @@ class NewCommand(Command):
                 return "Exception: sequence name does not start with @"
             sequence_name = sequence_name[1:]
         try:
-            sequence = self.__data_manager.save_sequence(sequence_name, DnaSequence(dna_sequence))
+            sequence = self.__dna_collection.save_sequence(sequence_name, DnaSequence(dna_sequence))
         except Exception as e:
             if len(args) < 2:
                 NewCommand.__next_name_index -= 1

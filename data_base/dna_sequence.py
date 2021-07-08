@@ -3,6 +3,8 @@ nucleotides = ["A", "C", "G", "T"]
 
 class DnaSequence:
     def __init__(self, sequence):
+        if len(sequence) == 0:
+            raise Exception("Exception: empty sequence")
         if any([let not in nucleotides for let in sequence]):
             raise Exception("Exception: invalid sequence")
         self.__sequence = sequence
@@ -11,6 +13,8 @@ class DnaSequence:
         return self.__sequence
 
     def set_sequence(self, sequence):
+        if len(sequence) == 0:
+            raise Exception("Exception: empty sequence")
         self.__sequence = sequence
 
     def insert(self, nucleotide, index):
@@ -31,7 +35,10 @@ class DnaSequence:
         return self.__sequence != other.get_sequence()
 
     def __getitem__(self, key):
-        return self.__sequence[key]
+        if isinstance(key, slice):
+            indices = range(*key.indices(len(self.__sequence)))
+            return DnaSequence(''.join([self.__sequence[i] for i in indices]))
+        return DnaSequence(self.__sequence[key])
 
     def __len__(self):
         return len(self.__sequence)

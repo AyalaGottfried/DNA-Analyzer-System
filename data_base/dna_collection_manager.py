@@ -8,14 +8,11 @@ class DnaCollectionManager(object):
     def __new__(cls, *args, **kwargs):
         if not DnaCollectionManager.__instance:
             DnaCollectionManager.__instance = object.__new__(cls)
-        return DnaCollectionManager.__instance
-
-    def __init__(self):
-        if not DnaCollectionManager.__init:
-            self.__dna_sequences = []
-            self.__ids = {}
-            self.__names = {}
+            cls.__dna_sequences = []
+            cls.__ids = {}
+            cls.__names = {}
             DnaCollectionManager.__init = True
+        return DnaCollectionManager.__instance
 
     def save_sequence(self, sequence_name, dna_sequence):
         if sequence_name not in self.__names:
@@ -27,7 +24,6 @@ class DnaCollectionManager(object):
         else:
             index = self.__names[sequence_name]
             sequence = self.__dna_sequences[index]
-            sequence.set_name(sequence_name)
             sequence.set_dna_sequence(dna_sequence)
         return sequence
 

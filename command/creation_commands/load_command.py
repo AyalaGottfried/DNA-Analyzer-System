@@ -5,7 +5,7 @@ from data_base.dna_sequence import DnaSequence
 
 class LoadCommand(Command):
     def __init__(self):
-        self.__data_manager = DnaCollectionManager()
+        self.__dna_collection = DnaCollectionManager()
 
     def execute(self, *args):
         if len(args) == 0:
@@ -22,7 +22,7 @@ class LoadCommand(Command):
         try:
             with open(file_name) as file:
                 dna_sequence = file.readline()
-                sequence = self.__data_manager.save_sequence(sequence_name, DnaSequence(dna_sequence))
+                sequence = self.__dna_collection.save_sequence(sequence_name, DnaSequence(dna_sequence))
         except FileNotFoundError:
             return "Exception: file not found"
         except Exception as e:

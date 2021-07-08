@@ -2,6 +2,8 @@ class Sequence:
     _next_id = 1
 
     def __init__(self, sequence_name, dna_sequence):
+        if sequence_name == "":
+            raise Exception("Exception: empty sequence name")
         self.__id = Sequence._next_id
         self.__name = sequence_name
         self.__dna_sequence = dna_sequence
@@ -20,6 +22,8 @@ class Sequence:
         self.__id = sequence_id
 
     def set_name(self, sequence_name):
+        if sequence_name == "":
+            raise Exception("Exception: empty sequence name")
         self.__name = sequence_name
 
     def set_dna_sequence(self, dna_sequence):
