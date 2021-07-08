@@ -1,21 +1,15 @@
-from command.commands_invoker import CommandsInvoker
+from cmd import Cmd
 
 
-class CLI:
-    def __init__(self):
-        self.__invoker = CommandsInvoker()
+class Cli:
+    def run(self, *args):
+        raise Exception("You must implement run method in {}".format(self.__class__))
 
-    def run(self):
-        while True:
-            command = input("> cmd >>> ")
-            res = self.__manage_command(command)
-            print(res)
+    def _get_input(self, prefix):
+        return input("> {} >>> ".format(prefix))
 
-    def __manage_command(self, command):
-        args = command.split()
-        res = self.__invoker.run_command(args[0], *args[1:])
-        return res
-
+    def _print_to_user(self, message):
+        print(message)
 
 if __name__ == "__main__":
-    CLI().run()
+    Cmd().run()
