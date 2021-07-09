@@ -1,5 +1,5 @@
-from cli.cli import Cli
 from command.commands_invoker import CommandsInvoker
+from terminal.cli import Cli
 
 
 class Cmd(Cli):
@@ -18,3 +18,5 @@ class Cmd(Cli):
         return res
 
 
+if __name__ == "__main__":
+    Cmd().run()

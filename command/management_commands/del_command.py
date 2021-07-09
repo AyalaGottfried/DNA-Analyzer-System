@@ -1,5 +1,5 @@
 from command.command import Command
-from cli.confirm import Confirm
+from terminal.confirm import Confirm
 from data_base.dna_collection_manager import DnaCollectionManager
 
 
