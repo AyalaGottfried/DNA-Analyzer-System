@@ -1,6 +1,6 @@
 class Command:
-    def execute(self, *args, **kwargs):
-        pass
+    def execute(self, *args):
+        raise Exception("You must implement execute method in {}".format(self.__class__))
 
     def _get_sequence_identify(self, arg, dna_collection):
         if arg[0] != "#" and arg[0] != "@":
