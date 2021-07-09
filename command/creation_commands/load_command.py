@@ -15,7 +15,7 @@ class LoadCommand(CreationCommand):
         try:
             with open(file_name) as file:
                 dna_sequence = file.readline()
-            return self._save_sequence(args, file_name, DnaSequence(dna_sequence))
+            return self._save_sequence(args, file_name, dna_sequence)
         except FileNotFoundError:
             return "Exception: file not found"
         except Exception as e:

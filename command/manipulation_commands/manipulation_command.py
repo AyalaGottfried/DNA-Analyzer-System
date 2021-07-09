@@ -6,6 +6,9 @@ class ManipulationCommand(Command):
     def __init__(self):
         self.__dna_collection = DnaCollectionManager()
 
+    def get_dna_collection(self):
+        return self.__dna_collection
+
     def _validations(self, sequence_to_manipulate, args, index, dna_for_new, dna_for_old):
         if len(args) > index:
             if args[index] != ":":

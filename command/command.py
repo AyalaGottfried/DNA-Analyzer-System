@@ -15,6 +15,6 @@ class Command:
 
     def _get_next_name(self, dna_collection, old_name, prefix):
         copy = 1
-        while dna_collection.is_name_exists("{}_s{}".format(old_name, copy)):
+        while dna_collection.is_name_exists("{}_{}{}".format(old_name, prefix, copy)):
             copy += 1
         return "{}_{}{}".format(old_name, prefix, copy)

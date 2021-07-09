@@ -1,3 +1,6 @@
+from terminal.cli import Cli
+
+
 class Confirm(Cli):
     def run(self, message):
         self._print_to_user(message)
