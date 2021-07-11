@@ -1,3 +1,5 @@
+import re
+
 nucleotides = ["A", "C", "G", "T"]
 
 
@@ -40,10 +42,17 @@ class DnaSequence:
         return self.__sequence[key]
 
     def __setitem__(self, key, value):
-        self.__sequence = self.__sequence[:key]+value+self.__sequence[key+1:]
+        self.__sequence = self.__sequence[:key] + value + self.__sequence[key + 1:]
 
     def __len__(self):
         return len(self.__sequence)
 
     def index(self, other_dna_sequence):
         return self.__sequence.index(other_dna_sequence.__sequence)
+
+    def count(self, other_dna_sequence):
+        return self.__sequence.count(other_dna_sequence.__sequence)
+
+    def find_all(self, other_dna_sequence):
+        matches = re.finditer("(?={})".format(other_dna_sequence.__sequence), self.__sequence)
+        return [match.start() for match in matches]

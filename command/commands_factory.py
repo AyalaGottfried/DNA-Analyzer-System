@@ -1,4 +1,6 @@
+from command.analysis_commands.count_command import CountCommand
 from command.analysis_commands.find_command import FindCommand
+from command.analysis_commands.findall_command import FindallCommand
 from command.analysis_commands.len_command import LenCommand
 from command.creation_commands.dup_command import DupCommand
 from command.creation_commands.load_command import LoadCommand
@@ -20,7 +22,9 @@ class CommandsFactory:
             "del": DelCommand,
             "save": SaveCommand,
             "len": LenCommand,
-            "find": FindCommand
+            "find": FindCommand,
+            "count": CountCommand,
+            "findall": FindallCommand
         }
 
     def get_command(self, command_name):
