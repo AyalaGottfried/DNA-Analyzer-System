@@ -1,3 +1,4 @@
+from command.analysis_commands.len_command import LenCommand
 from command.creation_commands.dup_command import DupCommand
 from command.creation_commands.load_command import LoadCommand
 from command.creation_commands.new_command import NewCommand
@@ -16,7 +17,8 @@ class CommandsFactory:
             "slice": SliceCommand,
             "pair": PairCommand,
             "del": DelCommand,
-            "save": SaveCommand
+            "save": SaveCommand,
+            "len": LenCommand
         }
 
     def get_command(self, command_name):
