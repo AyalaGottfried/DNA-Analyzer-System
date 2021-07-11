@@ -8,15 +8,10 @@ class LoadCommand(CreationCommand):
 
     def execute(self, *args):
         if len(args) == 0:
-            return "Exception: file name is required"
+            raise Exception( "Exception: file name is required")
         file_name = args[0]
         if file_name.split(".")[-1] != "rawdna" or len(file_name.split(".")) < 2:
-            return "Exception: file extension is not supported"
-        try:
-            with open(file_name) as file:
-                dna_sequence = file.readline()
-            return self._save_sequence(args, file_name, dna_sequence)
-        except FileNotFoundError:
-            return "Exception: file not found"
-        except Exception as e:
-            return e.args[0]
+            raise Exception( "Exception: file extension is not supported")
+        with open(file_name) as file:
+            dna_sequence = file.readline()
+        raise Exception( self._save_sequence(args, file_name, dna_sequence))

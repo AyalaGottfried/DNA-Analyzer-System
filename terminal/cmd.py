@@ -14,7 +14,10 @@ class Cmd(Cli):
 
     def __manage_command(self, command):
         args = command.split()
-        res = self.__invoker.run_command(args[0], *args[1:])
+        try:
+            res = self.__invoker.run_command(args[0], *args[1:])
+        except Exception as e:
+            return e.args[0]
         return res
 
 
