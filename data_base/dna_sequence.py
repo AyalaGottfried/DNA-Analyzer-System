@@ -51,7 +51,8 @@ class DnaSequence:
         return self.__sequence.index(other_dna_sequence.__sequence)
 
     def count(self, other_dna_sequence):
-        return self.__sequence.count(other_dna_sequence.__sequence)
+        matches = re.finditer("(?={})".format(other_dna_sequence.__sequence), self.__sequence)
+        return len(list(matches))
 
     def find_all(self, other_dna_sequence):
         matches = re.finditer("(?={})".format(other_dna_sequence.__sequence), self.__sequence)

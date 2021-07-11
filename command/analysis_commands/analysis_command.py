@@ -1,5 +1,6 @@
 from command.command import Command
 from data_base.dna_collection_manager import DnaCollectionManager
+from data_base.dna_sequence import DnaSequence
 
 
 class AnalysisCommand(Command):
@@ -9,3 +10,18 @@ class AnalysisCommand(Command):
     def get_dna_collection(self):
         return self.__dna_collection
 
+    def perform_analyze(self, args, action):
+        if len(args) < 2:
+            raise Exception("Exception: at least two arguments are required")
+        sequence_to_find_in = self._get_sequence_identify(args[0], self.__dna_collection)
+        if args[1][0] == '@' or args[1][0] == '#':
+            sequence_to_be_found = self._get_sequence_identify(args[1], self.__dna_collection)
+            dna_sequence_to_be_found = sequence_to_be_found.get_dna_sequence()
+        else:
+            dna_sequence_to_be_found = DnaSequence(args[1])
+        if action == "find":
+            return sequence_to_find_in.get_dna_sequence().index(dna_sequence_to_be_found)
+        elif action == "count":
+            return sequence_to_find_in.get_dna_sequence().count(dna_sequence_to_be_found)
+        elif action == "findall":
+            return sequence_to_find_in.get_dna_sequence().find_all(dna_sequence_to_be_found)
