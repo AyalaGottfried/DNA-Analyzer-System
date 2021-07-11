@@ -10,7 +10,7 @@ class AnalysisCommand(Command):
     def get_dna_collection(self):
         return self.__dna_collection
 
-    def perform_analyze(self, args, action):
+    def perform_analyze(self, args):
         if len(args) < 2:
             raise Exception("Exception: at least two arguments are required")
         sequence_to_find_in = self._get_sequence_identify(args[0], self.__dna_collection)
@@ -19,9 +19,4 @@ class AnalysisCommand(Command):
             dna_sequence_to_be_found = sequence_to_be_found.get_dna_sequence()
         else:
             dna_sequence_to_be_found = DnaSequence(args[1])
-        if action == "find":
-            return sequence_to_find_in.get_dna_sequence().index(dna_sequence_to_be_found)
-        elif action == "count":
-            return sequence_to_find_in.get_dna_sequence().count(dna_sequence_to_be_found)
-        elif action == "findall":
-            return sequence_to_find_in.get_dna_sequence().find_all(dna_sequence_to_be_found)
+        return sequence_to_find_in.get_dna_sequence(), dna_sequence_to_be_found

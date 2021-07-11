@@ -7,4 +7,5 @@ class CountCommand(AnalysisCommand):
         super().__init__()
 
     def execute(self, *args):
-        return self.perform_analyze(args, "count")
+        dna_to_find_in, dna_to_be_found = self.perform_analyze(args)
+        return dna_to_find_in.count(dna_to_be_found)
