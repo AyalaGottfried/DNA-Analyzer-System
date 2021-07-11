@@ -1,3 +1,4 @@
+from command.analysis_commands.find_command import FindCommand
 from command.analysis_commands.len_command import LenCommand
 from command.creation_commands.dup_command import DupCommand
 from command.creation_commands.load_command import LoadCommand
@@ -18,7 +19,8 @@ class CommandsFactory:
             "pair": PairCommand,
             "del": DelCommand,
             "save": SaveCommand,
-            "len": LenCommand
+            "len": LenCommand,
+            "find": FindCommand
         }
 
     def get_command(self, command_name):

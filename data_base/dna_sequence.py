@@ -44,3 +44,6 @@ class DnaSequence:
 
     def __len__(self):
         return len(self.__sequence)
+
+    def index(self, other_dna_sequence):
+        return self.__sequence.index(other_dna_sequence.__sequence)
