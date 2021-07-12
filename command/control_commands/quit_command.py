@@ -17,8 +17,14 @@ class QuitCommand(ControlCommand):
             elif seq.get_status() == "new":
                 new_num += 1
         if modified_num != 0 or new_num != 0:
-            user_confirm = self.__confirm.run("There are {} modified and {} new sequences. Are you sure you want to quit?".format(modified_num, new_num))
+            if modified_num == 0:
+                message = "There are {} new sequences. Are you sure you want to quit?".format(new_num)
+            elif new_num == 0:
+                message = "There are {} modified sequences. Are you sure you want to quit?".format(modified_num)
+            else:
+                message = "There are {} modified and {} new sequences. Are you sure you want to quit?".format(
+                    modified_num, new_num)
+            user_confirm = self.__confirm.run(message)
             if not user_confirm:
                 return "Quit cancelled"
         return "Thank you for using Dnalanyzer."
-
