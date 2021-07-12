@@ -11,3 +11,11 @@ class Cli:
     def _print_to_user(self, message):
         print(message)
 
+    def _manage_command(self, command, invoker):
+        args = command.split()
+        try:
+            res = invoker.run_command(args[0], *args[1:])
+        except Exception as e:
+            return e.args[0]
+        return res
+

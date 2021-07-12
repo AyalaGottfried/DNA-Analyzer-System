@@ -10,16 +10,9 @@ class Cmd(Cli):
     def run(self):
         while True:
             command = self._get_input()
-            res = self.__manage_command(command)
+            res = self._manage_command(command, self.__invoker)
             self._print_to_user(res)
 
-    def __manage_command(self, command):
-        args = command.split()
-        try:
-            res = self.__invoker.run_command(args[0], *args[1:])
-        except Exception as e:
-            return e.args[0]
-        return res
 
 
 if __name__ == "__main__":
