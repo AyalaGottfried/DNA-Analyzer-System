@@ -7,4 +7,4 @@ class ListBatchCommand(BatchCommand):
 
     def execute(self, *args):
         batches = self.get_batch_collection().get_all_batches_names()
-        return '\t'.join(batches)
+        return '\n'.join(batches)

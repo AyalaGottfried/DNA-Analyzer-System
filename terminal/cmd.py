@@ -15,5 +15,3 @@ class Cmd(Cli):
 
 
 
-if __name__ == "__main__":
-    Cmd().run()

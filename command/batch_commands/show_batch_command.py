@@ -1,4 +1,4 @@
-from command import BatchCommand
+from command.batch_commands import BatchCommand
 
 
 class ShowBatchCommand(BatchCommand):

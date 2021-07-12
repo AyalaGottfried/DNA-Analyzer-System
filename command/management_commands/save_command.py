@@ -9,7 +9,7 @@ class SaveCommand(ManagementCommand):
         if len(args) > 1:
             file_name = args[1]
             if file_name.split(".")[-1] != "rawdna" or len(file_name.split(".")) < 2:
-                raise Exception( "Exception: file extension is not supported")
+                raise Exception("Exception: file extension is not supported")
         else:
             file_name = sequence_to_save.get_name()+".rawdna"
         with open(file_name, "w") as file:

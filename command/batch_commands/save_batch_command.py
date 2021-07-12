@@ -9,7 +9,7 @@ class SaveBatchCommand(BatchCommand):
         if len(args) == 0:
             raise Exception("Exception: batch name is required")
         if len(args) > 2:
-            file_name = args[1]
+            file_name = "{}.dnabatch".format(args[2])
         else:
             file_name = "{}.dnabatch".format(args[0])
         batch_to_save = self.get_batch_collection().get_batch(args[0])
