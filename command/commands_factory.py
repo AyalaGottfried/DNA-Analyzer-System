@@ -21,7 +21,8 @@ class CommandsFactory:
             "findall": analysis_commands.FindallCommand,
             "batch": batch_commands.BatchCreationCommand,
             "run": batch_commands.RunBatchCommand,
-            "batchlist": batch_commands.ListBatchCommand
+            "batchlist": batch_commands.ListBatchCommand,
+            "batchshow": batch_commands.ShowBatchCommand
         }
 
     def get_command(self, command_name):
