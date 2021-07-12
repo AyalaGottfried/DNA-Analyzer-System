@@ -12,6 +12,9 @@ class Cmd(Cli):
             command = self._get_input()
             res = self._manage_command(command, self.__invoker)
             self._print_to_user(res)
+            if res == "Thank you for using Dnalanyzer.":
+                self._print_to_user("Goodbye!")
+                break
 
 
 

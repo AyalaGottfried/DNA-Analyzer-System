@@ -21,7 +21,8 @@ class CommandsFactory:
             "batchshow": batch_commands.ShowBatchCommand,
             "batchsave": batch_commands.SaveBatchCommand,
             "batchload": batch_commands.LoadBatchCommand,
-            "list": control_commands.ListCommand
+            "list": control_commands.ListCommand,
+            "quit": control_commands.QuitCommand
         }
 
     def get_command(self, command_name):

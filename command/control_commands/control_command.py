@@ -6,5 +6,5 @@ class ControlCommand(Command):
     def __init__(self):
         self.__dna_collection = DnaCollectionManager()
 
-    def get_dna_collection(self):
-        return self.__dna_collection
+    def get_all_sequences(self):
+        return self.__dna_collection.get_all_sequences()
