@@ -2,9 +2,6 @@ from command.manipulation_commands.manipulation_command import ManipulationComma
 
 
 class SliceCommand(ManipulationCommand):
-    def __init__(self):
-        super().__init__()
-
     def execute(self, *args):
         if len(args) < 3:
             raise Exception( "Exception: at least three argument is required")

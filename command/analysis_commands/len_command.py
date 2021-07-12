@@ -2,9 +2,6 @@ from command.analysis_commands.analysis_command import AnalysisCommand
 
 
 class LenCommand(AnalysisCommand):
-    def __init__(self):
-        super().__init__()
-
     def execute(self, *args):
         if len(args) == 0:
             raise Exception( "Exception: sequence id or name is required")

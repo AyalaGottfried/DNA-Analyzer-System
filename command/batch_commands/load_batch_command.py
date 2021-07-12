@@ -2,9 +2,6 @@ from command.batch_commands import BatchCommand
 
 
 class LoadBatchCommand(BatchCommand):
-    def __init__(self):
-        super().__init__()
-
     def execute(self, *args):
         if len(args) == 0:
             raise Exception("Exception: file name is required")

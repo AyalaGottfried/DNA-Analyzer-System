@@ -2,9 +2,6 @@ from command.creation_commands.creation_command import CreationCommand
 
 
 class DupCommand(CreationCommand):
-    def __init__(self):
-        super().__init__()
-
     def execute(self, *args):
         if len(args) == 0:
             raise Exception( "Exception: sequence id or name is required")

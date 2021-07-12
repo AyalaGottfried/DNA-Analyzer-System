@@ -3,9 +3,6 @@ from data_base.dna_sequence import DnaSequence
 
 
 class ConcatCommand(ManipulationCommand):
-    def __init__(self):
-        super().__init__()
-
     def __get_concat(self, index, args, sequence):
         for i in range(1, index):
             sequence += self.get_sequence(args[i]).get_dna_sequence()

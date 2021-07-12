@@ -4,7 +4,7 @@ from command.management_commands.management_command import ManagementCommand
 class SaveCommand(ManagementCommand):
     def execute(self, *args):
         if len(args) == 0:
-            raise Exception( "Exception: sequence id or name is required")
+            raise Exception("Exception: sequence id or name is required")
         sequence_to_save = self.get_sequence(args[0])
         if len(args) > 1:
             file_name = args[1]

@@ -5,9 +5,6 @@ from data_base.dna_sequence import DnaSequence
 class NewCommand(CreationCommand):
     __next_name_index = 0
 
-    def __init__(self):
-        super().__init__()
-
     def execute(self, *args):
         if len(args) == 0:
             raise Exception("Exception: dna sequence is required")

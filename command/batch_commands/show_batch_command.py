@@ -2,9 +2,6 @@ from command.batch_commands import BatchCommand
 
 
 class ShowBatchCommand(BatchCommand):
-    def __init__(self):
-        super().__init__()
-
     def execute(self, *args):
         if len(args) == 0:
             raise Exception("Exception: batch name is required")

@@ -2,9 +2,6 @@ from command.manipulation_commands.manipulation_command import ManipulationComma
 
 
 class ReplaceCommand(ManipulationCommand):
-    def __init__(self):
-        super().__init__()
-
     def __get_replace(self, index, args, sequence):
         for i in range(1, index, 2):
             sequence[int(args[i])] = args[i + 1]
