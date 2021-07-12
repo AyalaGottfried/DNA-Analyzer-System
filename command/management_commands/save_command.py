@@ -14,5 +14,4 @@ class SaveCommand(ManagementCommand):
             file_name = sequence_to_save.get_name()+".rawdna"
         with open(file_name, "w") as file:
             file.write(str(sequence_to_save.get_dna_sequence()))
-        return "Saved to {}: [{}] {}: {}".format(file_name, sequence_to_save.get_id(), sequence_to_save.get_name(),
-                                                 sequence_to_save.get_dna_sequence())
+        return "Saved to {}: {}".format(file_name, sequence_to_save)

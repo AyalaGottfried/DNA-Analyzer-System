@@ -18,5 +18,5 @@ class CreationCommand(Command):
                 raise Exception("Exception: sequence name does not start with @")
             sequence_name = args[1][1:]
         sequence = self.__dna_collection.save_sequence(sequence_name, DnaSequence(dna_sequence))
-        return "[{}] {}: {}".format(sequence.get_id(), sequence_name, dna_sequence)
+        return sequence
 

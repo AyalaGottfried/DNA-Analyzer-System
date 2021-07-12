@@ -4,11 +4,12 @@ from terminal.cli import Cli
 
 class Cmd(Cli):
     def __init__(self):
+        super().__init__("cmd")
         self.__invoker = CommandsInvoker()
 
     def run(self):
         while True:
-            command = self._get_input("cmd")
+            command = self._get_input()
             res = self.__manage_command(command)
             self._print_to_user(res)
 

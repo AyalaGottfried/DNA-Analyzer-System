@@ -3,7 +3,6 @@ from data_base.sequence import Sequence
 
 class DnaCollectionManager(object):
     __instance = None
-    __init = False
 
     def __new__(cls, *args, **kwargs):
         if not DnaCollectionManager.__instance:
@@ -11,7 +10,6 @@ class DnaCollectionManager(object):
             cls.__dna_sequences = []
             cls.__ids = {}
             cls.__names = {}
-            DnaCollectionManager.__init = True
         return DnaCollectionManager.__instance
 
     def save_sequence(self, sequence_name, dna_sequence):

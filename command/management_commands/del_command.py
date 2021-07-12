@@ -1,7 +1,5 @@
-from command.command import Command
 from command.management_commands.management_command import ManagementCommand
 from terminal.confirm import Confirm
-from data_base.dna_collection_manager import DnaCollectionManager
 
 
 class DelCommand(ManagementCommand):
@@ -18,6 +16,5 @@ class DelCommand(ManagementCommand):
                                                           sequence_to_delete.get_dna_sequence()))
         if user_confirm:
             self.get_dna_collection().remove_sequence(sequence_to_delete)
-            return "Deleted: [{}] {}: {}".format(sequence_to_delete.get_id(), sequence_to_delete.get_name(),
-                                                 sequence_to_delete.get_dna_sequence())
+            return "Deleted: {}".format(sequence_to_delete)
         return "Delete cancelled"

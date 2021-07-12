@@ -29,3 +29,6 @@ class Sequence:
     def set_dna_sequence(self, dna_sequence):
         self.__dna_sequence = dna_sequence
 
+    def __str__(self):
+        return "[{}] {}: {}".format(self.__id, self.__name, self.__dna_sequence)
+
