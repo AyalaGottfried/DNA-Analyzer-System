@@ -12,10 +12,10 @@ class DnaCollectionManager(object):
             cls.__names = {}
         return DnaCollectionManager.__instance
 
-    def save_sequence(self, sequence_name, dna_sequence):
+    def save_sequence(self, sequence_name, dna_sequence, status):
         if sequence_name not in self.__names:
             index = len(self.__dna_sequences)
-            sequence = Sequence(sequence_name, dna_sequence)
+            sequence = Sequence(sequence_name, dna_sequence, status)
             self.__dna_sequences.append(sequence)
             self.__ids[sequence.get_id()] = index
             self.__names[sequence.get_name()] = index

@@ -17,4 +17,4 @@ class LoadCommand(CreationCommand):
                 dna_sequence = file.readline()
         except FileNotFoundError:
             raise Exception("Exception: the file is not exists")
-        return self._save_sequence(args, ''.join(file_name.split('.')[:-1]), DnaSequence(dna_sequence))
+        return self._save_sequence(args, ''.join(file_name.split('.')[:-1]), DnaSequence(dna_sequence), 'up to date')

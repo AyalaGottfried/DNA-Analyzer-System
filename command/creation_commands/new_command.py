@@ -18,7 +18,7 @@ class NewCommand(CreationCommand):
             while self.get_dna_collection().is_name_exists("seq{}".format(NewCommand.__next_name_index)):
                 NewCommand.__next_name_index += 1
         try:
-            return self._save_sequence(args, "seq{}".format(NewCommand.__next_name_index),DnaSequence(dna_sequence))
+            return self._save_sequence(args, "seq{}".format(NewCommand.__next_name_index),DnaSequence(dna_sequence), "new")
         except Exception as e:
             if len(args) < 2:
                 NewCommand.__next_name_index = last_name_index

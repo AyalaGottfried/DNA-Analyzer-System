@@ -11,4 +11,4 @@ class DupCommand(CreationCommand):
         sequence_to_copy = self._get_sequence_identify(args[0], self.get_dna_collection())
         dna_sequence = sequence_to_copy.get_dna_sequence().assignment()
         new_name = self._get_next_name(self.get_dna_collection(), sequence_to_copy.get_name(), "")
-        return self._save_sequence(args, new_name, dna_sequence)
+        return self._save_sequence(args, new_name, dna_sequence, "new")

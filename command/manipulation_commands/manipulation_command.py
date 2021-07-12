@@ -21,8 +21,10 @@ class ManipulationCommand(Command):
             if new_sequence_name == "@":
                 new_sequence_name = self._get_next_name(self.__dna_collection, sequence_to_manipulate.get_name(), "p")
             dna_sequence = dna_for_new
+            status = "new"
         else:
             new_sequence_name = sequence_to_manipulate.get_name()
             dna_sequence = dna_for_old
-        new_sequence = self.__dna_collection.save_sequence(new_sequence_name, dna_sequence)
+            status = sequence_to_manipulate.get_status()
+        new_sequence = self.__dna_collection.save_sequence(new_sequence_name, dna_sequence, status)
         return new_sequence
