@@ -42,6 +42,8 @@ class DnaSequence:
         return self.__sequence[key]
 
     def __setitem__(self, key, value):
+        if value not in nucleotides:
+            raise Exception("Exception: invalid sequence")
         self.__sequence = self.__sequence[:key] + value + self.__sequence[key + 1:]
 
     def __len__(self):

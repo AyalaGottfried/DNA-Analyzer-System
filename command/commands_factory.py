@@ -9,6 +9,7 @@ class CommandsFactory:
             "dup": creation_commands.DupCommand,
             "slice": manipulation_commands.SliceCommand,
             "pair": manipulation_commands.PairCommand,
+            "replace": manipulation_commands.ReplaceCommand,
             "del": management_commands.DelCommand,
             "save": management_commands.SaveCommand,
             "len": analysis_commands.LenCommand,
