@@ -19,14 +19,15 @@ class CommandsFactory:
             "find": analysis_commands.FindCommand,
             "count": analysis_commands.CountCommand,
             "findall": analysis_commands.FindallCommand,
+            "help": control_commands.HelpCommand,
+            "list": control_commands.ListCommand,
+            "quit": control_commands.QuitCommand,
             "batch": batch_commands.BatchCreationCommand,
             "run": batch_commands.RunBatchCommand,
             "batchlist": batch_commands.ListBatchCommand,
             "batchshow": batch_commands.ShowBatchCommand,
             "batchsave": batch_commands.SaveBatchCommand,
             "batchload": batch_commands.LoadBatchCommand,
-            "list": control_commands.ListCommand,
-            "quit": control_commands.QuitCommand
         }
 
     def get_command(self, command_name):

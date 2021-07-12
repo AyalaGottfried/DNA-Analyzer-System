@@ -1,13 +1,13 @@
 import re
 
-nucleotides = ["A", "C", "G", "T"]
+NUCLEOTIDES = ["A", "C", "G", "T"]
 
 
 class DnaSequence:
     def __init__(self, sequence):
         if len(sequence) == 0:
             raise Exception("Exception: empty sequence")
-        if any([let not in nucleotides for let in sequence]):
+        if any([let not in NUCLEOTIDES for let in sequence]):
             raise Exception("Exception: invalid sequence")
         self.__sequence = sequence
 
@@ -20,7 +20,7 @@ class DnaSequence:
         self.__sequence = sequence
 
     def insert(self, nucleotide, index):
-        if nucleotide not in nucleotides:
+        if nucleotide not in NUCLEOTIDES:
             raise Exception("Exception: invalid sequence")
         self.__sequence = self.__sequence[:index] + nucleotide + self.__sequence[index:]
 
@@ -42,7 +42,7 @@ class DnaSequence:
         return self.__sequence[key]
 
     def __setitem__(self, key, value):
-        if value not in nucleotides:
+        if value not in NUCLEOTIDES:
             raise Exception("Exception: invalid sequence")
         self.__sequence = self.__sequence[:key] + value + self.__sequence[key + 1:]
 
