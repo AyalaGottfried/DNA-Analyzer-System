@@ -60,3 +60,9 @@ class DnaCollectionManager(object):
 
     def get_all_sequences(self):
         return self.__dna_sequences
+
+    def re_enumerates(self):
+        self.__ids = {}
+        for index, seq in enumerate(self.__dna_sequences):
+            seq.set_id(index+1)
+            self.__ids[index+1] = index

@@ -13,6 +13,7 @@ class CommandsFactory:
             "pair": manipulation_commands.PairCommand,
             "rename": management_commands.RenameCommand,
             "del": management_commands.DelCommand,
+            "reenum": management_commands.ReenumCommand,
             "save": management_commands.SaveCommand,
             "len": analysis_commands.LenCommand,
             "find": analysis_commands.FindCommand,
