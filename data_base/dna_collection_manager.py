@@ -57,3 +57,6 @@ class DnaCollectionManager(object):
 
     def is_name_exists(self, sequence_name):
         return sequence_name in self.__names
+
+    def get_all_sequences(self):
+        return self.__dna_sequences
