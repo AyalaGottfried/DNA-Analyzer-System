@@ -16,5 +16,4 @@ class Batch(Cli):
             batch.append(command)
 
     def execute_command(self, command):
-        res = self._manage_command(command, self.__invoker)
-        self._print_to_user(res)
+        return self._manage_command(command, self.__invoker)

@@ -9,6 +9,7 @@ class BatchCreationCommand(BatchCommand):
 
     def execute(self, *args):
         if len(args) == 0:
-            raise Exception("Exception: sequence id or name is required")
+            raise Exception("Exception: batch name is required")
         batch = self.__batch.run()
         self.get_batch_collection().add_batch(args[0], batch)
+        return "Batch {} created".format(args[0])

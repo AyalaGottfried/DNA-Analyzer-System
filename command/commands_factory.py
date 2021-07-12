@@ -1,30 +1,26 @@
-from command.analysis_commands.count_command import CountCommand
-from command.analysis_commands.find_command import FindCommand
-from command.analysis_commands.findall_command import FindallCommand
-from command.analysis_commands.len_command import LenCommand
-from command.creation_commands.dup_command import DupCommand
-from command.creation_commands.load_command import LoadCommand
-from command.creation_commands.new_command import NewCommand
-from command.management_commands.del_command import DelCommand
-from command.management_commands.save_command import SaveCommand
-from command.manipulation_commands.pair_command import PairCommand
-from command.manipulation_commands.slice_command import SliceCommand
+from command import batch_commands
+from command import analysis_commands
+from command import creation_commands
+from command import management_commands
+from command import manipulation_commands
 
 
 class CommandsFactory:
     def __init__(self):
         self.__commands = {
-            "new": NewCommand,
-            "load": LoadCommand,
-            "dup": DupCommand,
-            "slice": SliceCommand,
-            "pair": PairCommand,
-            "del": DelCommand,
-            "save": SaveCommand,
-            "len": LenCommand,
-            "find": FindCommand,
-            "count": CountCommand,
-            "findall": FindallCommand
+            "new": creation_commands.NewCommand,
+            "load": creation_commands.LoadCommand,
+            "dup": creation_commands.DupCommand,
+            "slice": manipulation_commands.SliceCommand,
+            "pair": manipulation_commands.PairCommand,
+            "del": management_commands.DelCommand,
+            "save": management_commands.SaveCommand,
+            "len": analysis_commands.LenCommand,
+            "find": analysis_commands.FindCommand,
+            "count": analysis_commands.CountCommand,
+            "findall": analysis_commands.FindallCommand,
+            "batch": batch_commands.BatchCreationCommand,
+            "run": batch_commands.RunBatchCommand
         }
 
     def get_command(self, command_name):
