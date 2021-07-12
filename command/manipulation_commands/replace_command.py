@@ -18,4 +18,6 @@ class ReplaceCommand(ManipulationCommand):
         except ValueError:
             index = len(args)
         sequence_to_replace = self.get_sequence(args[0])
-        return self.manipulate_sequence(sequence_to_replace, args, index, self.__get_replace(index, args, sequence_to_replace.get_dna_sequence().assignment()), self.__get_replace(index, args, sequence_to_replace.get_dna_sequence()), 'r')
+        old_dna = self.__get_replace(index, args, sequence_to_replace.get_dna_sequence())
+        new_dna = self.__get_replace(index, args, sequence_to_replace.get_dna_sequence().assignment())
+        return self.manipulate_sequence(sequence_to_replace, args, index, new_dna, old_dna, 'r')

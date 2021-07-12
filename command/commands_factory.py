@@ -10,6 +10,7 @@ class CommandsFactory:
             "slice": manipulation_commands.SliceCommand,
             "pair": manipulation_commands.PairCommand,
             "replace": manipulation_commands.ReplaceCommand,
+            "concat": manipulation_commands.ConcatCommand,
             "del": management_commands.DelCommand,
             "save": management_commands.SaveCommand,
             "len": analysis_commands.LenCommand,

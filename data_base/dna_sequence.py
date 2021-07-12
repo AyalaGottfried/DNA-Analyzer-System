@@ -59,3 +59,6 @@ class DnaSequence:
     def find_all(self, other_dna_sequence):
         matches = re.finditer("(?={})".format(other_dna_sequence.__sequence), self.__sequence)
         return [match.start() for match in matches]
+
+    def __add__(self, other_dna_sequence):
+        return DnaSequence(self.__sequence+other_dna_sequence.__sequence)

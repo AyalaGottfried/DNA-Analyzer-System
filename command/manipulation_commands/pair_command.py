@@ -15,4 +15,6 @@ class PairCommand(ManipulationCommand):
         if len(args) == 0:
             raise Exception( "Exception: sequence id or name is required")
         sequence_to_pair = self._get_sequence_identify(args[0], self.get_dna_collection())
-        return self.manipulate_sequence(sequence_to_pair, args, 1, self.__get_pair(sequence_to_pair.get_dna_sequence().assignment()), self.__get_pair(sequence_to_pair.get_dna_sequence()), 'p')
+        old_dna = self.__get_pair(sequence_to_pair.get_dna_sequence())
+        new_dna = self.__get_pair(sequence_to_pair.get_dna_sequence().assignment())
+        return self.manipulate_sequence(sequence_to_pair, args, 1, new_dna, old_dna, 'p')
