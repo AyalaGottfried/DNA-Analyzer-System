@@ -21,6 +21,7 @@ class CommandsFactory:
             "findall": analysis_commands.FindallCommand,
             "help": control_commands.HelpCommand,
             "list": control_commands.ListCommand,
+            "show": control_commands.ShowCommand,
             "quit": control_commands.QuitCommand,
             "batch": batch_commands.BatchCreationCommand,
             "run": batch_commands.RunBatchCommand,
