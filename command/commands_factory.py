@@ -22,7 +22,9 @@ class CommandsFactory:
             "batch": batch_commands.BatchCreationCommand,
             "run": batch_commands.RunBatchCommand,
             "batchlist": batch_commands.ListBatchCommand,
-            "batchshow": batch_commands.ShowBatchCommand
+            "batchshow": batch_commands.ShowBatchCommand,
+            "batchsave": batch_commands.SaveBatchCommand,
+            "batchload": batch_commands.LoadBatchCommand,
         }
 
     def get_command(self, command_name):

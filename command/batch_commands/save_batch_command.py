@@ -1,7 +1,7 @@
-from command import BatchCommand
+from command.batch_commands import BatchCommand
 
 
-class ShowBatchCommand(BatchCommand):
+class SaveBatchCommand(BatchCommand):
     def __init__(self):
         super().__init__()
 

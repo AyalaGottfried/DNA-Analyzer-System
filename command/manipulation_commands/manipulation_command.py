@@ -9,7 +9,7 @@ class ManipulationCommand(Command):
     def get_dna_collection(self):
         return self.__dna_collection
 
-    def _validations(self, sequence_to_manipulate, args, index, dna_for_new, dna_for_old):
+    def manipulate_sequence(self, sequence_to_manipulate, args, index, dna_for_new, dna_for_old):
         if len(args) > index:
             if args[index] != ":":
                 raise Exception("Exception: the third command is appears and not equal to :")
