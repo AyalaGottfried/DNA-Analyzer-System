@@ -1,9 +1,9 @@
-##DNA PROJECT
-###Description
+## DNA PROJECT
+### Description
 This project stands for creating and manipulating DNA sequences,
 using special commands.
 
-###Classes
+### Classes
 The project is consists of the following classes:
 * data_base:
     * DnaSequence: represents a single dna sequence - holds a string of nucleotides.
@@ -25,17 +25,17 @@ The project is consists of the following classes:
     * Confirm: represents a confirm mode of the cli.
     * Batch: represents a batch mode of the cli.
 
-###Design
+### Design
 In this project I used three design patterns:
-* ####Singleton:
+* #### Singleton:
     _Restricts object creation for a class to only one instance._
   
     I used this pattern to restrict the databases to be single.
-* #####Command:
+* #### Command:
     _Creates objects that encapsulate actions and parameters._
   
     I used this pattern for manage the different commands.
-* #####Factory:
+* #### Factory:
     _Creates objects without specifying the exact class to create._
   
     I used this pattern to create the commands objects.
