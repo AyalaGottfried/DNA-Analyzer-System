@@ -27,15 +27,15 @@ The project is consists of the following classes:
 
 ### Design
 In this project I used three design patterns:
-* ** Singleton**:
+* **Singleton**:
     _Restricts object creation for a class to only one instance._
   
     I used this pattern to restrict the databases to be single.
-* ** Command**:
+* **Command**:
     _Creates objects that encapsulate actions and parameters._
   
     I used this pattern for manage the different commands.
-* ** Factory**:
+* **Factory**:
     _Creates objects without specifying the exact class to create._
   
     I used this pattern to create the commands objects.
