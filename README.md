@@ -238,7 +238,7 @@ If an auto-generate name is required ( `@@` is used), then it will be the origin
 > `[ 24 ] short_seq_s1_repl_seq_c1_p1: ACGGATCGTA`
 
 
-### Classes
+## Classes
 The project is consists of the following classes:
 * data_base:
     * DnaSequence: represents a single dna sequence - holds a string of nucleotides.
@@ -260,7 +260,7 @@ The project is consists of the following classes:
     * Confirm: represents a confirm mode of the cli.
     * Batch: represents a batch mode of the cli.
 
-### Design
+## Design
 In this project I used three design patterns:
 * **Singleton**:
     _Restricts object creation for a class to only one instance._
