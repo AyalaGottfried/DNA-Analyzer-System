@@ -237,6 +237,123 @@ If an auto-generate name is required ( `@@` is used), then it will be the origin
 > 
 > `[ 24 ] short_seq_s1_repl_seq_c1_p1: ACGGATCGTA`
 
+### Sequence Management Commands
+This is a list of commands that manage existing sequences (without manipulating them).
+
+#### rename
+**` > cmd >>> rename <seq> @<new_name>`**
+
+renames the name of the sequence to the new name.
+
+If that name is already taken, an explanatory error message is printed.
+
+#### del
+**` > cmd >>> del <seq>`**
+
+deletes that sequence.
+
+Before deleting it, the user is asked to confirm that:
+
+Confirmation is done by entering `y` or `Y` , Entering `n` or `N` cancels the deletion. Any other input will result in a message that asks the user again to confirm the deletion.
+
+Once confirmed, the sequence is deleted and a message is printed. Otherwise, a cancellation message is printed.
+
+> ***So, a deletion scenario might look like:***
+> ```
+> > cmd >>> del # 23
+> Do you really want to delete conseq_1_1: ATACTGCCTGAATACAGCATAGCATTGCCT?
+> Please confirm by 'y' or 'Y' , or cancel by 'n' or 'N' .
+> > confirm >>> x
+> You have typed an invalid response. Please either confirm by 'y' / 'Y' , or
+> cancel by 'n' / 'N' .
+> > confirm >>> Y
+> Deleted: [ 23 ] conseq_1_1: ATACTGCCTGAATACAGCATAGCATTGCCT
+> ```
+
+#### reenum
+**` > cmd >>> reenum`**
+
+re-enumerates all the sequences, so that their numbers are 1..n , where n is the number of sequences. The original order is kept.
+
+#### save
+**` > cmd >>> save <seq> [<filename>]`**
+
+saves sequence `<seq>` to a file.
+
+If `<filename>` is not provided, the sequence name is being used.
+
+The filename is suffixed by `.rawdna`.
+
+### Sequence Analysis Commands
+#### len
+**` > cmd >>> len <seq_id>`**
+
+prints the length of the sequence.
+> ***For example:***
+> 
+> If sequence #34 is `AAATGTGATG` , then it will look like this:
+> ```
+> > cmd >>> len # 34
+> 10
+> ```
+
+#### find
+The `find` command finds a sub-sequence within a sequence.
+
+It has two flavors:
+
+1. Takes an **expressed sub-sequence**:
+**` > cmd >>> find <seq> <expressed_sub_seq>`**
+
+returns the (0-based) index of the first appearance of `<expressed_sub_seq>` in the sequence `<seq>`.
+
+> ***Thus, for example:***
+> 
+> If sequence #11 is `AACCTTGGAATTCCGGAA` and we are looking for the sub-sequence `GG` , it will look like:
+> ```
+> > cmd >>> find # 11 GG
+> 7
+> ```
+
+2. Refers an **existing sub-sequence**:
+**` > cmd >>> find <seq_to_find_in> <seq_to_be_found>`**
+
+> ***Thus, for example:***
+> 
+> If seq #11 is as appears above, and sequence #25 is `CTTGGA` , it might look like:
+> ```
+> > cmd >>> find # 11 # 25
+> 4
+> ```
+
+#### count
+`count` works in a similar way to `find`, only it returns the number of instances of the sub-sequence within the larger sequence.
+
+Like `find`, it has two flavors, one that takes an **expressed sub-sequence**, and one that refers an **existing sub-sequence**:
+
+```
+> cmd >>> count <seq> <expressed_sub_seq>
+> cmd >>> count <seq_to_find_in> <seq_to_be_found>
+```
+
+#### findall
+
+```
+> cmd >>> findall <seq> <expressed_sub_seq>
+> cmd >>> findall <seq_to_find_in> <seq_to_be_found>
+```
+
+work very similar to `find`, only they return all the indices where the sub-sequence appears.
+
+> ***Thus, for example:***
+> 
+> Using the above sequence for sequence #11, it might look like:
+> ```
+> > cmd >>> findall # 11 GA
+> 8 16
+> > cmd >>> findall # 11 AA
+> 1 9 17
+> ```
 
 ## Classes
 The project is consists of the following classes:
