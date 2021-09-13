@@ -432,6 +432,69 @@ If not all the sequences are `up to date`, it first requests for a confirmation.
 > Goodbye!
 > ```
 
+### Batch Commands
+#### Batch Creation
+**` > cmd >>>batch <batch_name>`**
+
+Batch mode allows the user to define a series of actions that will take place one after another.
+
+In order to define a batch, the user enters the command `batch`, followed by the name of that new batch. Then, it enters into **batch mode**, where any command is not being activated immediately, but rather, entered into the batch.
+
+The command `end` ends the batch mode.
+
+> ***For example:***
+> ```
+> > cmd >>> batch my_batch
+> > batch >>> load basil_dna.rawdna @basil
+> > batch >>> pair basil @basil_pair
+> > batch >>> slice @basil_pair 0 4 @basil_interesting_part
+> > batch >>> save @basil_pair
+> > batch >>> end
+> > cmd >>>
+> ```
+
+This batch (when run) will load a sequence from the file `basil_dna.rawdna` and will keep it under the name `basil`.
+
+Then, it will create its pair and keep it under the name `basil_pair`.
+
+After that, it will slice it to the first forth nucleodites. That slice will be kept under the name `basil_interesting_part` and then will be saved to disk using that name (with the `.rawdna` suffix).
+
+When the batch mode ends, the batch is added to the list of active batches - nothing is
+being activated yet.
+
+#### Running Batches
+The command **`run <@batchname>`** runs a batch, that is, executes it as if the commands were entered manually.
+
+#### Listing Batches
+The command **`batchlist`** shows a list of all the batch names.
+
+#### Showing a Batch
+The command **`batchshow <@batch_name>`** shows the content of that batch.
+
+#### Saving Batches
+Saving a batch is done using the command **`batchsave`**, followed by the filename.
+
+If the filename is omitted, then the batch name is being used as the filename, with the suffix `.dnabatch`.
+
+The batch is saved exactly as it is written in the CLI (without the prompt, of course).
+
+> ***Thus, for example:***
+> ```
+> The above script will be saved as:
+> load basil_dna.rawdna @basil
+> pair basil @basil_pair
+> find ## TGATTCTC : @start_slice
+> find ## TTTTAAAATTTTCCCC
+> calc __ + 4
+> slice @basil_pair @start_slice __ @basil_interesting_part
+> save ##
+> ```
+
+#### Loading Batches
+Loading a batch is done using the command `batchload`, followed by the filename to be loaded.
+
+The loaded batch will have that name (without the `.dnabatch` suffix, if appears). If the command is followed by `: @<batch_name>`, then it will be kept as batch_name.
+
 ## Classes
 The project is consists of the following classes:
 * data_base:
