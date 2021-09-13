@@ -355,6 +355,83 @@ work very similar to `find`, only they return all the indices where the sub-sequ
 > 1 9 17
 > ```
 
+### Control Commands
+The following commands control the application, rather than working on sequences:
+
+#### help
+** ` > cmd >>> help [<command>]`**
+
+If `<command>` is not provided, help lists all the available commands.
+
+If a valid command is provided, it shows a short explanation of it.
+
+If the value provided is not a valid command, a relevant message is printed.
+
+#### list
+**` > cmd >>> list`**
+shows all the sequences in the system, by order.
+
+For each sequence, it shows its number, its name and the sequence itself (up to 40 chars).
+
+A sequence that is c onnected to a file (that is, either was loaded from a file, or was saved to a file at least once) and was not manipulated since last save, is prefixed by a `-` sign.
+
+A sequence that was manipulated after last save, is prefixed by a `*` sign.
+
+A sequence that is not connected to any file yet is prefixed by a `o` sign.
+
+> ***For example, a typical list output might be:***
+> ```
+> > cmd >>> list
+> - [ 1 ] short_seq: ATACTGCCTGAATAC
+> - [ 14 ] my_dna_seq: AACGTTTTTGAACACCAGTCAACAACTAGCCA...TTG
+> * [ 21 ] short_seq_s1_repl_seq_c1: TGCCTAGCAT
+> * [ 22 ] conseq_1: ATACTGCCTGAATACAGCATAGCATTGCCT
+> o [ 24 ] short_seq_s1_repl_seq_c1_p1: ACGGATCGTA
+> ```
+
+#### show
+**` > cmd >>>show <seq> [<num_chars>]`**
+
+Shows the sequence: Its ID, its name, its status and the sequence itself.
+
+The status is either `up to date` (was not changed since last save), `modified` (changed since last save) or `new` (not yet connected to a file).
+
+The ID, name and status are printed in the first line.
+
+Then, the sequence itself is printed in the next lines, no more than 99 chars per line.
+If `<num_chars>` is provided, then this is the number of chars to print (if the sequence is longer than that). Otherwise, `<num_chars>` defaults to 99.
+
+> ***Thus, it might look like:***
+> ```
+> > cmd >>> show # 7 204
+> [ 7 ] lab_test_seq_feb_2015 modified
+> CCGTGCCTAGCATACGGATCGTATGCCTAGCATACTAGCATCCGTGCCTAGCATACGGATCGTATGCCTAGC
+> ATACTAGCATCCGTGCCTAGCATACGG
+> CGTATGCCTAGCATCCCGGATCGTATACGGATCGTAGTGCCTAGCATACGGAGCCTAGCATACTAGCATCCG
+> TGCCTAGCATTACTAGCATCCGTGCCT
+> AGCATA
+> ```
+
+#### quit
+**` > cmd >>> quit`**
+
+prints a goodbye message and exists the application.
+
+If not all the sequences are `up to date`, it first requests for a confirmation.
+
+> ***So, for example, it might look like:***
+> ```
+> > cmd >>> quit
+> There are 3 modified and 2 new sequences. Are you sure you want to quit?
+> Please confirm by 'y' or 'Y' , or cancel by 'n' or 'N' .
+> > confirm >>> qwerty
+> You have typed an invalid response. Please either confirm by 'y' / 'Y' , or
+> cancel by 'n' / 'N' .
+> > confirm >>> Y
+> Thank you for using Dnalanyzer.
+> Goodbye!
+> ```
+
 ## Classes
 The project is consists of the following classes:
 * data_base:
