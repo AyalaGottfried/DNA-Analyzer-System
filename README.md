@@ -303,6 +303,7 @@ The `find` command finds a sub-sequence within a sequence.
 It has two flavors:
 
 1. Takes an **expressed sub-sequence**:
+
 **` > cmd >>> find <seq> <expressed_sub_seq>`**
 
 returns the (0-based) index of the first appearance of `<expressed_sub_seq>` in the sequence `<seq>`.
@@ -316,6 +317,7 @@ returns the (0-based) index of the first appearance of `<expressed_sub_seq>` in 
 > ```
 
 2. Refers an **existing sub-sequence**:
+
 **` > cmd >>> find <seq_to_find_in> <seq_to_be_found>`**
 
 > ***Thus, for example:***
